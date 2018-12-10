@@ -22,5 +22,7 @@ public:
 
 	float Magnitude();
 	Vector2 Normalize();
+
+	float Distance(Vector2 other);
 };
 

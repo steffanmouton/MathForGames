@@ -68,3 +68,9 @@ Vector2 Vector2::Normalize()
 
 
 }
+
+float Vector2::Distance(Vector2 other)
+{
+	Vector2 temp = Vector2(xPos - other.GetX(), yPos - other.GetY());
+	return temp.Magnitude();
+}
