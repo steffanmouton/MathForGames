@@ -65,8 +65,6 @@ Vector2 Vector2::Normalize()
 	float mag = Magnitude();
 
 	return Vector2(xPos / mag, yPos / mag);
-
-
 }
 
 float Vector2::Distance(Vector2 other)

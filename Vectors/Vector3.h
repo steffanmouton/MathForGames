@@ -24,5 +24,7 @@ public:
 
 	float Magnitude();
 	Vector3 Normalize();
+
+	float Distance(Vector3 other);
 };
 
