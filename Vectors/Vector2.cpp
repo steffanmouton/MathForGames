@@ -42,7 +42,7 @@ Vector2 Vector2::operator-(Vector2 & rhs)
 
 Vector2 Vector2::operator*(float & rhs)
 {
-	return Vector2(xPos * rhs, yPos * rhs);
+	return Vector2(xPos * rhs, yPos * rhs); 
 }
 
 bool Vector2::operator==(Vector2 & rhs)
