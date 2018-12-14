@@ -73,6 +73,19 @@ Vector3 Vector3::Normalize()
 	return Vector3(xPos / mag, yPos / mag, zPos / mag);
 }
 
+float Vector3::Dot(Vector3 other)
+{
+	return (GetX()*other.GetX() + GetY()*other.GetY() + GetZ()*other.GetZ());
+}
+
+Vector3 Vector3::Cross(Vector3 other)
+{
+	float x = GetY()*other.GetZ() - GetZ()*other.GetY();
+	float y = GetZ()*other.GetX() - GetX()*other.GetZ();
+	float z = GetX()*other.GetY() - GetY()*other.GetX();
+	return Vector3(x, y, z);
+}
+
 float Vector3::Distance(Vector3 other)
 {
 	Vector3 temp = Vector3(xPos - other.GetX(), yPos - other.GetY(), zPos - other.GetZ());

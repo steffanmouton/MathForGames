@@ -23,6 +23,8 @@ public:
 	float Magnitude();
 	Vector2 Normalize();
 
+	float Dot(Vector2 other);
+
 	float Distance(Vector2 other);
 };
 

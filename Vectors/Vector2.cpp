@@ -67,6 +67,11 @@ Vector2 Vector2::Normalize()
 	return Vector2(xPos / mag, yPos / mag);
 }
 
+float Vector2::Dot(Vector2 other)
+{
+	return (GetX()*other.GetX() + GetY()*other.GetY());
+}
+
 float Vector2::Distance(Vector2 other)
 {
 	Vector2 temp = Vector2(xPos - other.GetX(), yPos - other.GetY());

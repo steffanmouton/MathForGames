@@ -25,6 +25,9 @@ public:
 	float Magnitude();
 	Vector3 Normalize();
 
+	float Dot(Vector3 other);
+	Vector3 Cross(Vector3 other);
+
 	float Distance(Vector3 other);
 };
 
