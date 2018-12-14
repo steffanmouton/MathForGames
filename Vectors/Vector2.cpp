@@ -29,6 +29,17 @@ float Vector2::GetY()
 	return yPos;
 }
 
+void Vector2::SetX(float x)
+{
+	xPos = x;
+}
+
+void Vector2::SetY(float y)
+{
+	yPos = y;
+}
+
+
 Vector2 Vector2::operator+(Vector2 & rhs)
 {
 	return Vector2(xPos + rhs.GetX(), yPos + rhs.GetY());

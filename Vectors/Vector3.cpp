@@ -36,6 +36,21 @@ float Vector3::GetZ()
 	return zPos;
 }
 
+void Vector3::SetX(float x)
+{
+	xPos = x;
+}
+
+void Vector3::SetY(float y)
+{
+	yPos = y;
+}
+
+void Vector3::SetZ(float z)
+{
+	zPos = z;
+}
+
 Vector3 Vector3::operator+(Vector3 & rhs)
 {
 	return Vector3(xPos + rhs.GetX(), yPos + rhs.GetY(), zPos + rhs.GetZ());

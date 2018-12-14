@@ -16,6 +16,10 @@ public:
 	float GetY();
 	float GetZ();
 
+	void SetX(float x);
+	void SetY(float y);
+	void SetZ(float z);
+
 	Vector3 operator+(Vector3 &rhs);
 	Vector3 operator-(Vector3 &rhs);
 	Vector3 operator*(float &rhs);

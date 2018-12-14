@@ -14,6 +14,9 @@ public:
 	float GetX();
 	float GetY();
 
+	void SetX(float x);
+	void SetY(float y);
+
 	Vector2 operator+(Vector2 &rhs);
 	Vector2 operator-(Vector2 &rhs);
 	Vector2 operator*(float &rhs);
