@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathForGames", "MathForGame
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vectors", "..\Vectors\Vectors.vcxproj", "{2DC08819-BB5C-48D8-9C3E-D354EE09D479}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "..\Test\Test.vcxproj", "{B06704E5-1740-4460-AB96-D8BD1755361C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{2DC08819-BB5C-48D8-9C3E-D354EE09D479}.Release|x64.Build.0 = Release|x64
 		{2DC08819-BB5C-48D8-9C3E-D354EE09D479}.Release|x86.ActiveCfg = Release|Win32
 		{2DC08819-BB5C-48D8-9C3E-D354EE09D479}.Release|x86.Build.0 = Release|Win32
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Debug|x64.ActiveCfg = Debug|x64
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Debug|x64.Build.0 = Debug|x64
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Debug|x86.ActiveCfg = Debug|Win32
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Debug|x86.Build.0 = Debug|Win32
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Release|x64.ActiveCfg = Release|x64
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Release|x64.Build.0 = Release|x64
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Release|x86.ActiveCfg = Release|Win32
+		{B06704E5-1740-4460-AB96-D8BD1755361C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
