@@ -40,28 +40,28 @@ void Vector2::SetY(float y)
 }
 
 
-Vector2 Vector2::operator+(Vector2 & rhs)
+Vector2 Vector2::operator+(Vector2 & rhs) const
 {
 	return Vector2(xPos + rhs.GetX(), yPos + rhs.GetY());
 }
 
-Vector2 Vector2::operator-(Vector2 & rhs)
+Vector2 Vector2::operator-(Vector2 & rhs) const
 {
 	return Vector2(xPos - rhs.GetX(), yPos - rhs.GetY());
 }
 
 
-Vector2 Vector2::operator*(float & rhs)
+Vector2 Vector2::operator*(float & rhs) const
 {
-	return Vector2(xPos * rhs, yPos * rhs); 
+	return Vector2(xPos * rhs, yPos * rhs);
 }
 
-bool Vector2::operator==(Vector2 & rhs)
+bool Vector2::operator==(Vector2 & rhs) const
 {
 	return xPos == rhs.GetX() && yPos == rhs.GetY();
 }
 
-bool Vector2::operator!=(Vector2 & rhs)
+bool Vector2::operator!=(Vector2 & rhs) const
 {
 	return xPos != rhs.GetX() || yPos != rhs.GetY();
 }
@@ -87,4 +87,9 @@ float Vector2::Distance(Vector2 other)
 {
 	Vector2 temp = Vector2(xPos - other.GetX(), yPos - other.GetY());
 	return temp.Magnitude();
+}
+
+Vector2 operator*(float scalar, Vector2& v)
+{
+	return v * scalar;
 }

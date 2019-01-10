@@ -17,11 +17,12 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 
-	Vector2 operator+(Vector2 &rhs);
-	Vector2 operator-(Vector2 &rhs);
-	Vector2 operator*(float &rhs);
-	bool operator==(Vector2 &rhs);
-	bool operator!=(Vector2 &rhs);
+	Vector2 operator+(Vector2 &rhs) const;
+	Vector2 operator-(Vector2 &rhs) const;
+	Vector2 operator*(float &rhs) const;
+	bool operator==(Vector2 &rhs) const;
+	bool operator!=(Vector2 &rhs) const;
+	friend Vector2 operator* (float scalar, Vector2& v);
 
 	float Magnitude();
 	Vector2 Normalize();
