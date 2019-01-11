@@ -1,5 +1,6 @@
 #include "Vector3.h"
 #include <cmath>
+#include <iostream>
 
 
 Vector3::Vector3()
@@ -74,6 +75,19 @@ bool Vector3::operator==(Vector3 & rhs)
 bool Vector3::operator!=(Vector3 & rhs)
 {
 	return xPos != rhs.GetX() || yPos != rhs.GetY() || zPos != rhs.GetZ();
+}
+
+float Vector3::operator[](int index)
+{
+	if (index == 0)
+		return xPos;
+	if (index == 1)
+		return yPos;
+	if (index == 2)
+		return zPos;
+	else
+		std::cout << "Invalid Index" << std::endl;
+		return 0.0f;
 }
 
 float Vector3::Magnitude()

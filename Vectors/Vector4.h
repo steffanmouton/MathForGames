@@ -29,6 +29,7 @@ public:
 	bool operator==(Vector4 &rhs);
 	bool operator!=(Vector4 &rhs);
 	friend Vector4 operator* (float scalar, Vector4& v);
+	float operator[](int index);
 
 	float Magnitude();
 	Vector4 Normalize();

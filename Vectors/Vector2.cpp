@@ -1,5 +1,6 @@
 #include "Vector2.h"
 #include <cmath>
+#include <iostream>
 
 
 Vector2::Vector2()
@@ -88,6 +89,18 @@ float Vector2::Distance(Vector2 other)
 	Vector2 temp = Vector2(xPos - other.GetX(), yPos - other.GetY());
 	return temp.Magnitude();
 }
+
+float Vector2::operator[](int index)
+{
+	if (index == 0)
+		return xPos;
+	else if (index == 1)
+		return yPos;
+	else
+		std::cout << "Invalid Index" << std::endl;
+	return;
+}
+
 
 Vector2 operator*(float scalar, Vector2& v)
 {

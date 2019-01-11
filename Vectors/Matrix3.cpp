@@ -1,5 +1,5 @@
 #include "Matrix3.h"
-
+#include <iostream>
 
 
 Matrix3::Matrix3()
@@ -34,17 +34,51 @@ Matrix3 Matrix3::operator*(Matrix3 & rhs)
 {
 	float x1, x2, x3, y1, y2, y3, z1, z2, z3;
 
-	x1 = xCol.Dot(xRow);
-	x2 = xCol.Dot(yRow);
-	x3 = xCol.Dot(zRow);
+	x1 = xRow.Dot(rhs.xCol);
+	x2 = yRow.Dot(rhs.xCol);
+	x3 = zRow.Dot(rhs.xCol);
 
-	y1 = yCol.Dot(xRow);
-	y2 = yCol.Dot(yRow);
-	y3 = yCol.Dot(zRow);
+	y1 = xRow.Dot(rhs.yCol);
+	y2 = yRow.Dot(rhs.yCol);
+	y3 = zRow.Dot(rhs.yCol);
 
-	z1 = zCol.Dot(xRow);
-	z2 = zCol.Dot(yRow);
-	z3 = zCol.Dot(zRow);
+	z1 = xRow.Dot(rhs.zCol);
+	z2 = yRow.Dot(rhs.zCol);
+	z3 = zRow.Dot(rhs.zCol);
 
 	return Matrix3(x1, x2, x3, y1, y2, y3, z1, z2, z3);
+}
+
+Vector3 Matrix3::operator[](int index)
+{
+	if (index == 0)
+		return xCol;
+	else if (index == 1)
+		return yCol;
+	else if (index == 2)
+		return zCol;
+	else
+		std::cout << "Invalid Index" <<std::endl;
+	return Vector3();
+
+}
+
+Vector3 Matrix3::operator*(Vector3 & rhs)
+{
+	return Vector3(xCol.Dot(rhs), yCol.Dot(rhs), zCol.Dot(rhs));
+}
+
+Matrix3 Matrix3::setRotateZ(float angle)
+{
+	Matrix3 rotate = { cos(angle), sin(angle), 0, -sin(angle), cos(angle), 0, 0, 0, 1 };
+	return Matrix3(*this * rotate);
+}
+
+
+void Matrix3::Print()
+{
+	for (int i = 0; i < 9; i++)
+	{
+		std::cout << data[i] << " ";
+	}
 }

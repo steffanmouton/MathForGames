@@ -30,5 +30,7 @@ public:
 	float Dot(Vector2 other);
 
 	float Distance(Vector2 other);
+
+	float operator[](int index);
 };
 

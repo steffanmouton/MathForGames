@@ -1,5 +1,6 @@
 #include "Vector4.h"
 #include <cmath>
+#include <iostream>
 
 
 Vector4::Vector4()
@@ -90,6 +91,21 @@ bool Vector4::operator!=(Vector4& rhs)
 {
 	return xPos != rhs.GetX() || yPos != rhs.GetY() || zPos != rhs.GetZ() 
 	|| wPos != rhs.GetW();
+}
+
+float Vector4::operator[](int index)
+{
+	if (index == 0)
+		return xPos;
+	if (index == 1)
+		return yPos;
+	if (index == 2)
+		return zPos;
+	if (index == 3)
+		return wPos;
+	else
+		std::cout << "Invalid Index" << std::endl;
+		return 0.0f;
 }
 
 float Vector4::Magnitude()

@@ -1,5 +1,4 @@
 #pragma once
-#include "Vector2.h"
 #include "Vector3.h"
 #include <vector>
 
@@ -17,6 +16,7 @@ private:
 	std::vector<float> data;
 
 public:
+
 	Matrix3();
 	Matrix3(float x1, float x2, float x3, float y1, float y2, 
 		float y3, float z1, float z2, float z3);
@@ -24,5 +24,13 @@ public:
 	~Matrix3();
 
 	Matrix3 operator*(Matrix3& rhs);
+
+	Vector3 operator[](int index);
+
+	Vector3 operator*(Vector3& rhs);
+
+	Matrix3 setRotateZ(float angle);
+
+	void Print();
 };
 
