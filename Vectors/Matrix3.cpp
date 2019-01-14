@@ -68,6 +68,18 @@ Vector3 Matrix3::operator*(Vector3 & rhs)
 	return Vector3(xCol.Dot(rhs), yCol.Dot(rhs), zCol.Dot(rhs));
 }
 
+Matrix3 Matrix3::setRotateX(float angle)
+{
+	Matrix3 rotate = { 1, 0, 0, 0, cos(angle), sin(angle), 0, -sin(angle), cos(angle) };
+	return Matrix3(*this * rotate);
+}
+
+Matrix3 Matrix3::setRotateY(float angle)
+{
+	Matrix3 rotate = { cos(angle), 0, -sin(angle), 0, 1, 0, sin(angle), 0, cos(angle) };
+	return Matrix3(*this * rotate);
+}
+
 Matrix3 Matrix3::setRotateZ(float angle)
 {
 	Matrix3 rotate = { cos(angle), sin(angle), 0, -sin(angle), cos(angle), 0, 0, 0, 1 };

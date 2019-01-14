@@ -29,6 +29,8 @@ public:
 
 	Vector3 operator*(Vector3& rhs);
 
+	Matrix3 setRotateX(float angle);
+	Matrix3 setRotateY(float angle);
 	Matrix3 setRotateZ(float angle);
 
 	void Print();
