@@ -34,17 +34,17 @@ Matrix3 Matrix3::operator*(Matrix3 & rhs)
 {
 	float x1, x2, x3, y1, y2, y3, z1, z2, z3;
 
-	x1 = xRow.Dot(rhs.xCol);
-	x2 = yRow.Dot(rhs.xCol);
-	x3 = zRow.Dot(rhs.xCol);
+	x1 = xRow.dot(rhs.xCol);
+	x2 = yRow.dot(rhs.xCol);
+	x3 = zRow.dot(rhs.xCol);
 
-	y1 = xRow.Dot(rhs.yCol);
-	y2 = yRow.Dot(rhs.yCol);
-	y3 = zRow.Dot(rhs.yCol);
+	y1 = xRow.dot(rhs.yCol);
+	y2 = yRow.dot(rhs.yCol);
+	y3 = zRow.dot(rhs.yCol);
 
-	z1 = xRow.Dot(rhs.zCol);
-	z2 = yRow.Dot(rhs.zCol);
-	z3 = zRow.Dot(rhs.zCol);
+	z1 = xRow.dot(rhs.zCol);
+	z2 = yRow.dot(rhs.zCol);
+	z3 = zRow.dot(rhs.zCol);
 
 	return Matrix3(x1, x2, x3, y1, y2, y3, z1, z2, z3);
 }
@@ -65,7 +65,7 @@ Vector3 Matrix3::operator[](int index)
 
 Vector3 Matrix3::operator*(Vector3 & rhs)
 {
-	return Vector3(xCol.Dot(rhs), yCol.Dot(rhs), zCol.Dot(rhs));
+	return Vector3(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs));
 }
 
 Matrix3 Matrix3::setRotateX(float angle)

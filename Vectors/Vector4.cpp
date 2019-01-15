@@ -108,30 +108,30 @@ float Vector4::operator[](int index)
 		return 0.0f;
 }
 
-float Vector4::Magnitude()
+float Vector4::magnitude()
 {
 	return sqrt(pow(xPos, 2) + pow(yPos, 2) + pow(zPos, 2) + pow(wPos, 2));
 }
 
-Vector4 Vector4::Normalize()
+Vector4 Vector4::normalise()
 {
-	float mag = Magnitude();
+	float mag = magnitude();
 
 	return Vector4(xPos / mag, yPos / mag, zPos / mag, wPos / mag);
 
 }
 
-float Vector4::Dot(Vector4 other)
+float Vector4::dot(Vector4 other)
 {
 	return (GetX()*other.GetX() + GetY()*other.GetY() + GetZ()*other.GetZ() 
 		+ GetW()*other.GetW());
 }
 
-float Vector4::Distance(Vector4 other)
+float Vector4::distance(Vector4 other)
 {
 	Vector4 temp = Vector4(xPos - other.GetX(), yPos - other.GetY(), 
 		zPos - other.GetZ(), wPos - other.GetW());
-	return temp.Magnitude();
+	return temp.magnitude();
 }
 
 Vector4 operator*(float scalar, Vector4 & v)

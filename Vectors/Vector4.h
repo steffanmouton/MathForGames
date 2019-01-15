@@ -31,11 +31,11 @@ public:
 	friend Vector4 operator* (float scalar, Vector4& v);
 	float operator[](int index);
 
-	float Magnitude();
-	Vector4 Normalize();
+	float magnitude();
+	Vector4 normalise();
 
-	float Dot(Vector4 other);
+	float dot(Vector4 other);
 
-	float Distance(Vector4 other);
+	float distance(Vector4 other);
 };
 

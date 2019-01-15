@@ -28,12 +28,12 @@ public:
 	friend Vector3 operator* (float scalar, Vector3& v);
 	float operator[](int index);
 
-	float Magnitude();
-	Vector3 Normalize();
+	float magnitude();
+	Vector3 normalise();
 
-	float Dot(Vector3 other);
-	Vector3 Cross(Vector3 other);
+	float dot(Vector3 other);
+	Vector3 cross(Vector3 other);
 
-	float Distance(Vector3 other);
+	float distance(Vector3 other);
 };
 

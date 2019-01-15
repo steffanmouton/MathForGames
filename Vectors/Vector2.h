@@ -24,12 +24,12 @@ public:
 	bool operator!=(Vector2 &rhs) const;
 	friend Vector2 operator* (float scalar, Vector2& v);
 
-	float Magnitude();
-	Vector2 Normalize();
+	float magnitude();
+	Vector2 normalise();
 
-	float Dot(Vector2 other);
+	float dot(Vector2 other);
 
-	float Distance(Vector2 other);
+	float distance(Vector2 other);
 
 	float operator[](int index);
 };

@@ -67,27 +67,27 @@ bool Vector2::operator!=(Vector2 & rhs) const
 	return xPos != rhs.GetX() || yPos != rhs.GetY();
 }
 
-float Vector2::Magnitude()
+float Vector2::magnitude()
 {
 	return sqrt(pow(xPos, 2) + pow(yPos, 2));
 }
 
-Vector2 Vector2::Normalize()
+Vector2 Vector2::normalise()
 {
-	float mag = Magnitude();
+	float mag = magnitude();
 
 	return Vector2(xPos / mag, yPos / mag);
 }
 
-float Vector2::Dot(Vector2 other)
+float Vector2::dot(Vector2 other)
 {
 	return (GetX()*other.GetX() + GetY()*other.GetY());
 }
 
-float Vector2::Distance(Vector2 other)
+float Vector2::distance(Vector2 other)
 {
 	Vector2 temp = Vector2(xPos - other.GetX(), yPos - other.GetY());
-	return temp.Magnitude();
+	return temp.magnitude();
 }
 
 float Vector2::operator[](int index)

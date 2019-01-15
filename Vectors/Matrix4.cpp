@@ -36,25 +36,25 @@ Matrix4 Matrix4::operator*(Matrix4 & rhs)
 {
 	float x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4;
 
-	x1 = xRow.Dot(rhs.xCol);
-	x2 = yRow.Dot(rhs.xCol);
-	x3 = zRow.Dot(rhs.xCol);
-	x4 = wRow.Dot(rhs.xCol);
+	x1 = xRow.dot(rhs.xCol);
+	x2 = yRow.dot(rhs.xCol);
+	x3 = zRow.dot(rhs.xCol);
+	x4 = wRow.dot(rhs.xCol);
 
-	y1 = xRow.Dot(rhs.yCol);
-	y2 = yRow.Dot(rhs.yCol);
-	y3 = zRow.Dot(rhs.yCol);
-	y4 = wRow.Dot(rhs.yCol);
+	y1 = xRow.dot(rhs.yCol);
+	y2 = yRow.dot(rhs.yCol);
+	y3 = zRow.dot(rhs.yCol);
+	y4 = wRow.dot(rhs.yCol);
 
-	z1 = xRow.Dot(rhs.zCol);
-	z2 = yRow.Dot(rhs.zCol);
-	z3 = zRow.Dot(rhs.zCol);
-	z4 = wRow.Dot(rhs.zCol);
+	z1 = xRow.dot(rhs.zCol);
+	z2 = yRow.dot(rhs.zCol);
+	z3 = zRow.dot(rhs.zCol);
+	z4 = wRow.dot(rhs.zCol);
 
-	w1 = xRow.Dot(rhs.wCol);
-	w2 = yRow.Dot(rhs.wCol);
-	w3 = zRow.Dot(rhs.wCol);
-	w4 = wRow.Dot(rhs.wCol);
+	w1 = xRow.dot(rhs.wCol);
+	w2 = yRow.dot(rhs.wCol);
+	w3 = zRow.dot(rhs.wCol);
+	w4 = wRow.dot(rhs.wCol);
 
 	return Matrix4(x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4);
 }
@@ -76,7 +76,7 @@ Vector4 Matrix4::operator[](int index)
 
 Vector4 Matrix4::operator*(Vector4 & rhs)
 {
-	return Vector4(xCol.Dot(rhs), yCol.Dot(rhs), zCol.Dot(rhs), wCol.Dot(rhs));
+	return Vector4(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs), wCol.dot(rhs));
 }
 
 Matrix4 Matrix4::setRotateX(float angle)

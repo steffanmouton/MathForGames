@@ -90,24 +90,24 @@ float Vector3::operator[](int index)
 		return 0.0f;
 }
 
-float Vector3::Magnitude()
+float Vector3::magnitude()
 {
 	return sqrt(pow(xPos, 2) + pow(yPos, 2) + pow(zPos, 2));
 }
 
-Vector3 Vector3::Normalize()
+Vector3 Vector3::normalise()
 {
-	float mag = Magnitude();
+	float mag = magnitude();
 
 	return Vector3(xPos / mag, yPos / mag, zPos / mag);
 }
 
-float Vector3::Dot(Vector3 other)
+float Vector3::dot(Vector3 other)
 {
 	return (GetX()*other.GetX() + GetY()*other.GetY() + GetZ()*other.GetZ()); 
 }
 
-Vector3 Vector3::Cross(Vector3 other)
+Vector3 Vector3::cross(Vector3 other)
 {
 	float x = GetY()*other.GetZ() - GetZ()*other.GetY();
 	float y = GetZ()*other.GetX() - GetX()*other.GetZ();
@@ -115,10 +115,10 @@ Vector3 Vector3::Cross(Vector3 other)
 	return Vector3(x, y, z);
 }
 
-float Vector3::Distance(Vector3 other)
+float Vector3::distance(Vector3 other)
 {
 	Vector3 temp = Vector3(xPos - other.GetX(), yPos - other.GetY(), zPos - other.GetZ());
-	return temp.Magnitude();
+	return temp.magnitude();
 }
 
 Vector3 operator*(float scalar, Vector3 & v)
