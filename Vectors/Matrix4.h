@@ -6,6 +6,10 @@
 class Matrix4
 {
 private:
+	
+
+public:
+
 	Vector4 xCol;
 	Vector4 yCol;
 	Vector4 zCol;
@@ -18,7 +22,6 @@ private:
 
 	std::vector<float> data;
 
-public:
 	Matrix4();
 	Matrix4(float x1, float x2, float x3, float x4,
 		float y1, float y2,float y3, float y4,
