@@ -36,6 +36,12 @@
     <ClCompile Include="Vector4.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MontyHall.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Probability.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -57,6 +63,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MontyHall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Probability.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -119,6 +119,8 @@
     <ClCompile Include="Colour.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="MontyHall.cpp" />
+    <ClCompile Include="Probability.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
@@ -128,6 +130,8 @@
     <ClInclude Include="Colour.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="MontyHall.h" />
+    <ClInclude Include="Probability.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

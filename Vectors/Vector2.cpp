@@ -98,7 +98,7 @@ float Vector2::operator[](int index)
 		return yPos;
 	else
 		std::cout << "Invalid Index" << std::endl;
-	return;
+	return -1;
 }
 
 
