@@ -9,11 +9,14 @@ Vector4::Vector4()
 	yPos = 0;
 	zPos = 0;
 	wPos = 0;
+
+	mData = new float[4] {xPos, yPos, zPos, wPos};
 }
 
 
 Vector4::~Vector4()
 {
+
 }
 
 Vector4::Vector4(float x, float y, float z, float w)
@@ -22,6 +25,8 @@ Vector4::Vector4(float x, float y, float z, float w)
 	yPos = y;
 	zPos = z;
 	wPos = w;
+
+	mData = new float[4]{ xPos, yPos, zPos, wPos };
 }
 
 float Vector4::GetX()
@@ -76,7 +81,7 @@ Vector4 Vector4::operator-(Vector4& rhs)
 		wPos - rhs.GetW());
 }
 
-Vector4 Vector4::operator*(float& rhs)
+Vector4 Vector4::operator*(float rhs)
 {
 	return Vector4(xPos * rhs, yPos * rhs, zPos * rhs, wPos * rhs);
 }
@@ -113,18 +118,26 @@ float Vector4::magnitude()
 	return sqrt(pow(xPos, 2) + pow(yPos, 2) + pow(zPos, 2) + pow(wPos, 2));
 }
 
-Vector4 Vector4::normalise()
+void Vector4::normalise()
 {
 	float mag = magnitude();
 
-	return Vector4(xPos / mag, yPos / mag, zPos / mag, wPos / mag);
-
+	Vector4 result(xPos / mag, yPos / mag, zPos / mag, wPos / mag);
+	*this = result;
 }
 
 float Vector4::dot(Vector4 other)
 {
 	return (GetX()*other.GetX() + GetY()*other.GetY() + GetZ()*other.GetZ() 
 		+ GetW()*other.GetW());
+}
+
+Vector4 Vector4::cross(Vector4 other)
+{
+	float x = GetY()*other.GetZ() - GetZ()*other.GetY();
+	float y = GetZ()*other.GetX() - GetX()*other.GetZ();
+	float z = GetX()*other.GetY() - GetY()*other.GetX();
+	return Vector4(x, y, z, 0);
 }
 
 float Vector4::distance(Vector4 other)

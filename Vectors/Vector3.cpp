@@ -8,11 +8,14 @@ Vector3::Vector3()
 	xPos = 0;
 	yPos = 0;
 	zPos = 0;
+
+	mData = new float[3] {xPos, yPos, zPos};
 }
 
 
 Vector3::~Vector3()
 {
+	
 }
 
 Vector3::Vector3(float x, float y, float z)
@@ -20,6 +23,8 @@ Vector3::Vector3(float x, float y, float z)
 	xPos = x;
 	yPos = y;
 	zPos = z;
+
+	mData = new float[3]{ xPos, yPos, zPos };
 }
 
 float Vector3::GetX()
@@ -62,7 +67,7 @@ Vector3 Vector3::operator-(Vector3 & rhs)
 	return Vector3(xPos - rhs.GetX(), yPos - rhs.GetY(), zPos - rhs.GetZ());
 }
 
-Vector3 Vector3::operator*(float & rhs)
+Vector3 Vector3::operator*(float rhs)
 {
 	return Vector3(xPos * rhs, yPos * rhs, zPos * rhs);
 }
@@ -95,11 +100,12 @@ float Vector3::magnitude()
 	return sqrt(pow(xPos, 2) + pow(yPos, 2) + pow(zPos, 2));
 }
 
-Vector3 Vector3::normalise()
+void Vector3::normalise()
 {
 	float mag = magnitude();
 
-	return Vector3(xPos / mag, yPos / mag, zPos / mag);
+	Vector3 result(xPos / mag, yPos / mag, zPos / mag);
+	*this = result;
 }
 
 float Vector3::dot(Vector3 other)

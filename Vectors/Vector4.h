@@ -7,6 +7,8 @@ private:
 	float zPos;
 	float wPos;
 
+	float *mData;
+
 public:
 
 	Vector4();
@@ -25,17 +27,23 @@ public:
 
 	Vector4 operator+(Vector4 &rhs);
 	Vector4 operator-(Vector4 &rhs);
-	Vector4 operator*(float &rhs);
+	Vector4 operator*(float rhs);
 	bool operator==(Vector4 &rhs);
 	bool operator!=(Vector4 &rhs);
 	friend Vector4 operator* (float scalar, Vector4& v);
 	float operator[](int index);
 
 	float magnitude();
-	Vector4 normalise();
+	void normalise();
 
 	float dot(Vector4 other);
+	Vector4 cross(Vector4 other);
 
 	float distance(Vector4 other);
+
+	operator float*()
+	{
+		return mData;
+	}
 };
 

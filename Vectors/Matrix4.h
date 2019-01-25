@@ -22,6 +22,8 @@ public:
 
 	std::vector<float> data;
 
+	float *mData;
+
 	Matrix4();
 	Matrix4(float x1, float x2, float x3, float x4,
 		float y1, float y2,float y3, float y4,
@@ -33,10 +35,15 @@ public:
 	Vector4 operator[](int index);
 	Vector4 operator*(Vector4& rhs);
 
-	Matrix4 setRotateX(float angle);
-	Matrix4 setRotateY(float angle);
-	Matrix4 setRotateZ(float angle);
+	void setRotateX(float angle);
+	void setRotateY(float angle);
+	void setRotateZ(float angle);
 
 	void Print();
+
+	operator float*()
+	{
+		return mData;
+	}
 };
 

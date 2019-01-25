@@ -6,10 +6,9 @@ Matrix3::Matrix3()
 {
 	xCol, yCol, zCol, xRow, yRow, zRow = Vector3(0, 0, 0);
 
-	for (int i =0; i<9; i++)
-	{
-		data[i] = 0;
-	}
+	data = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+	mData = new float[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
 }
 
 Matrix3::Matrix3(float x1, float x2, float x3, float y1, float y2, float y3, float z1, float z2, float z3)
@@ -23,11 +22,13 @@ Matrix3::Matrix3(float x1, float x2, float x3, float y1, float y2, float y3, flo
 	zRow = Vector3(x3, y3, z3);
 
 	data = { x1, x2, x3, y1, y2, y3, z1, z2, z3 };
+	mData = new float[9] { x1, x2, x3, y1, y2, y3, z1, z2, z3 };
 }
 
 
 Matrix3::~Matrix3()
 {
+	
 }
 
 Matrix3 Matrix3::operator*(Matrix3 & rhs)
@@ -68,22 +69,22 @@ Vector3 Matrix3::operator*(Vector3 & rhs)
 	return Vector3(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs));
 }
 
-Matrix3 Matrix3::setRotateX(float angle)
+void Matrix3::setRotateX(float angle)
 {
 	Matrix3 rotate = { 1, 0, 0, 0, cos(angle), sin(angle), 0, -sin(angle), cos(angle) };
-	return Matrix3(*this * rotate);
+	*this = rotate;
 }
 
-Matrix3 Matrix3::setRotateY(float angle)
+void Matrix3::setRotateY(float angle)
 {
 	Matrix3 rotate = { cos(angle), 0, -sin(angle), 0, 1, 0, sin(angle), 0, cos(angle) };
-	return Matrix3(*this * rotate);
+	*this = rotate;
 }
 
-Matrix3 Matrix3::setRotateZ(float angle)
+void Matrix3::setRotateZ(float angle)
 {
 	Matrix3 rotate = { cos(angle), sin(angle), 0, -sin(angle), cos(angle), 0, 0, 0, 1 };
-	return Matrix3(*this * rotate);
+	*this = rotate;
 }
 
 

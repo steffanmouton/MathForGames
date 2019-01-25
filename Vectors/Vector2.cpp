@@ -7,17 +7,22 @@ Vector2::Vector2()
 {
 	xPos = 0;
 	yPos = 0;
+
+	mData = new float[2] {xPos, yPos};
 }
 
 
 Vector2::~Vector2()
 {
+	
 }
 
 Vector2::Vector2(float x, float y)
 {
 	xPos = x;
 	yPos = y;
+
+	mData = new float[2] {xPos, yPos};
 }
 
 float Vector2::GetX()
@@ -43,19 +48,17 @@ void Vector2::SetY(float y)
 
 Vector2 Vector2::operator+(Vector2 & rhs) const
 {
-	return Vector2(xPos + rhs.GetX(), yPos + rhs.GetY());
+	Vector2 result(xPos + rhs.GetX(), yPos + rhs.GetY());
+	return result;
 }
 
 Vector2 Vector2::operator-(Vector2 & rhs) const
 {
-	return Vector2(xPos - rhs.GetX(), yPos - rhs.GetY());
+	Vector2 result(xPos - rhs.GetX(), yPos - rhs.GetY());
+	return result;
 }
 
 
-Vector2 Vector2::operator*(float & rhs) const
-{
-	return Vector2(xPos * rhs, yPos * rhs);
-}
 
 bool Vector2::operator==(Vector2 & rhs) const
 {
@@ -72,11 +75,12 @@ float Vector2::magnitude()
 	return sqrt(pow(xPos, 2) + pow(yPos, 2));
 }
 
-Vector2 Vector2::normalise()
+void Vector2::normalise()
 {
 	float mag = magnitude();
 
-	return Vector2(xPos / mag, yPos / mag);
+	Vector2 result(xPos / mag, yPos / mag);
+	*this = result;
 }
 
 float Vector2::dot(Vector2 other)
@@ -105,4 +109,8 @@ float Vector2::operator[](int index)
 Vector2 operator*(float scalar, Vector2& v)
 {
 	return v * scalar;
+}
+Vector2 Vector2::operator*(float  rhs) const
+{
+	return Vector2(xPos * rhs, yPos * rhs);
 }

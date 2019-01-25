@@ -6,13 +6,18 @@ Matrix4::Matrix4()
 {
 	xCol, yCol, zCol, wCol, xRow, yRow, zRow, wRow = Vector4(0, 0, 0, 0);
 
-	for (int i = 0; i<9; i++)
+	for (int i = 0; i<16; i++)
 	{
 		data[i] = 0;
 	}
+
+	mData = new float[16] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 }
 
-Matrix4::Matrix4(float x1, float x2, float x3, float x4, float y1, float y2, float y3, float y4, float z1, float z2, float z3, float z4, float w1, float w2, float w3, float w4)
+Matrix4::Matrix4(float x1, float x2, float x3, float x4, 
+	float y1, float y2, float y3, float y4, 
+	float z1, float z2, float z3, float z4, 
+	float w1, float w2, float w3, float w4)
 {
 	xCol = Vector4(x1, x2, x3, x4);
 	yCol = Vector4(y1, y2, y3, y4);
@@ -25,11 +30,13 @@ Matrix4::Matrix4(float x1, float x2, float x3, float x4, float y1, float y2, flo
 	wRow = Vector4(x4, y4, z4, w4);
 
 	data = { x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4 };
+	mData = new float[16] {x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4};
 }
 
 
 Matrix4::~Matrix4()
 {
+	
 }
 
 Matrix4 Matrix4::operator*(Matrix4 & rhs)
@@ -79,25 +86,29 @@ Vector4 Matrix4::operator*(Vector4 & rhs)
 	return Vector4(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs), wCol.dot(rhs));
 }
 
-Matrix4 Matrix4::setRotateX(float angle)
+void Matrix4::setRotateX(float angle)
 {
+
 	Matrix4 rotate = { 1, 0, 0, 0, 0, cos(angle), sin(angle), 0, 0, -sin(angle),
-		cos(angle), 0, 0, 0, 0, 1 };
-	return Matrix4(*this * rotate);
+		cos(angle), 0, data[12], data[13], data[14], data[15] };
+
+	*this = rotate;
 }
 
-Matrix4 Matrix4::setRotateY(float angle)
+void Matrix4::setRotateY(float angle)
 {
 	Matrix4 rotate = { cos(angle), 0, -sin(angle), 0, 0, 1, 0, 0, sin(angle), 0,
-		cos(angle), 0, 0, 0, 0, 1 };
-	return Matrix4(*this * rotate);
+		cos(angle), 0, data[12], data[13], data[14], data[15] };
+
+	*this = rotate;
 }
 
-Matrix4 Matrix4::setRotateZ(float angle)
+void Matrix4::setRotateZ(float angle)
 {
 	Matrix4 rotate = { cos(angle), sin(angle), 0, 0, -sin(angle), cos(angle), 0, 0, 0, 0,
-		1, 0, 0, 0, 0, 1 };
-	return Matrix4(*this * rotate);
+		1, 0, data[12], data[13], data[14], data[15] };
+
+	*this = rotate;
 }
 
 void Matrix4::Print()
