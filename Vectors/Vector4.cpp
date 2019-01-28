@@ -52,21 +52,25 @@ float Vector4::GetW()
 void Vector4::SetX(float x)
 {
 	xPos = x;
+	mData[0] = x;
 }
 
 void Vector4::SetY(float y)
 {
 	yPos = y;
+	mData[1] = y;
 }
 
 void Vector4::SetZ(float z)
 {
 	zPos = z;
+	mData[2] = z;
 }
 
 void Vector4::SetW(float w)
 {
 	wPos = w;
+	mData[3] = w;
 }
 
 Vector4 Vector4::operator+(Vector4& rhs)
@@ -96,6 +100,16 @@ bool Vector4::operator!=(Vector4& rhs)
 {
 	return xPos != rhs.GetX() || yPos != rhs.GetY() || zPos != rhs.GetZ() 
 	|| wPos != rhs.GetW();
+}
+
+Vector4 Vector4::operator=(Vector4  rhs)
+{
+	this->SetX(rhs.GetX());
+	this->SetY(rhs.GetY());
+	this->SetZ(rhs.GetZ());
+	this->SetW(rhs.GetW());
+
+	return *this;
 }
 
 float Vector4::operator[](int index)

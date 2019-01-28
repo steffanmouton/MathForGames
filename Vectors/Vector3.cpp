@@ -45,16 +45,19 @@ float Vector3::GetZ()
 void Vector3::SetX(float x)
 {
 	xPos = x;
+	mData[0] = x;
 }
 
 void Vector3::SetY(float y)
 {
 	yPos = y;
+	mData[1] = y;
 }
 
 void Vector3::SetZ(float z)
 {
 	zPos = z;
+	mData[2] = z;
 }
 
 Vector3 Vector3::operator+(Vector3 & rhs)
@@ -93,6 +96,15 @@ float Vector3::operator[](int index)
 	else
 		std::cout << "Invalid Index" << std::endl;
 		return 0.0f;
+}
+
+Vector3 Vector3::operator=(Vector3  rhs)
+{
+	this->SetX(rhs.GetX());
+	this->SetY(rhs.GetY());
+	this->SetZ(rhs.GetZ());
+
+	return *this;
 }
 
 float Vector3::magnitude()

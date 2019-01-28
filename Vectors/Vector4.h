@@ -30,6 +30,8 @@ public:
 	Vector4 operator*(float rhs);
 	bool operator==(Vector4 &rhs);
 	bool operator!=(Vector4 &rhs);
+
+	Vector4 operator=(Vector4 rhs);
 	friend Vector4 operator* (float scalar, Vector4& v);
 	float operator[](int index);
 

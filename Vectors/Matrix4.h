@@ -32,12 +32,14 @@ public:
 	~Matrix4();
 
 	Matrix4 operator*(Matrix4& rhs);
-	Vector4 operator[](int index);
+	Vector4& operator[](int index);
 	Vector4 operator*(Vector4& rhs);
 
 	void setRotateX(float angle);
 	void setRotateY(float angle);
 	void setRotateZ(float angle);
+
+	void refreshMat();
 
 	void Print();
 

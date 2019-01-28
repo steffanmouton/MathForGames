@@ -28,7 +28,7 @@ public:
 
 	Matrix3 operator*(Matrix3& rhs);
 
-	Vector3 operator[](int index);
+	Vector3& operator[](int index);
 
 	Vector3 operator*(Vector3& rhs);
 
@@ -36,10 +36,13 @@ public:
 	void setRotateY(float angle);
 	void setRotateZ(float angle);
 
+	void refreshMat();
+
 	void Print();
 
 	operator float*()
 	{
+
 		return mData;
 	}
 };

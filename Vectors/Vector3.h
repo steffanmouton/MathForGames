@@ -18,6 +18,8 @@ public:
 	float GetY();
 	float GetZ();
 
+	
+
 	void SetX(float x);
 	void SetY(float y);
 	void SetZ(float z);
@@ -29,6 +31,8 @@ public:
 	bool operator!=(Vector3 &rhs);
 	friend Vector3 operator* (float scalar, Vector3& v);
 	float operator[](int index);
+
+	Vector3 operator=(Vector3 rhs);
 
 	float magnitude();
 	void normalise();

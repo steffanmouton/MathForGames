@@ -33,6 +33,7 @@ Matrix3::~Matrix3()
 
 Matrix3 Matrix3::operator*(Matrix3 & rhs)
 {
+	refreshMat();
 	float x1, x2, x3, y1, y2, y3, z1, z2, z3;
 
 	x1 = xRow.dot(rhs.xCol);
@@ -50,7 +51,7 @@ Matrix3 Matrix3::operator*(Matrix3 & rhs)
 	return Matrix3(x1, x2, x3, y1, y2, y3, z1, z2, z3);
 }
 
-Vector3 Matrix3::operator[](int index)
+Vector3& Matrix3::operator[](int index)
 {
 	if (index == 0)
 		return xCol;
@@ -59,32 +60,47 @@ Vector3 Matrix3::operator[](int index)
 	else if (index == 2)
 		return zCol;
 	else
-		std::cout << "Invalid Index" <<std::endl;
-	return Vector3();
-
+		std::cout << "Invalid Index" <<std::endl;	
 }
 
 Vector3 Matrix3::operator*(Vector3 & rhs)
 {
-	return Vector3(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs));
+	refreshMat();
+
+	return Vector3(xRow.dot(rhs), yRow.dot(rhs), zRow.dot(rhs));
 }
+
 
 void Matrix3::setRotateX(float angle)
 {
+	refreshMat();
 	Matrix3 rotate = { 1, 0, 0, 0, cos(angle), sin(angle), 0, -sin(angle), cos(angle) };
 	*this = rotate;
 }
 
 void Matrix3::setRotateY(float angle)
 {
+	refreshMat();
 	Matrix3 rotate = { cos(angle), 0, -sin(angle), 0, 1, 0, sin(angle), 0, cos(angle) };
 	*this = rotate;
 }
 
 void Matrix3::setRotateZ(float angle)
 {
+	refreshMat();
 	Matrix3 rotate = { cos(angle), sin(angle), 0, -sin(angle), cos(angle), 0, 0, 0, 1 };
-	*this = rotate;
+	*this = rotate;	
+}
+
+void Matrix3::refreshMat()
+{
+	delete mData;
+	mData = new float[9] { xCol.GetX(), xCol.GetY(), xCol.GetZ(), yCol.GetX(), yCol.GetY(), yCol.GetZ(),
+	zCol.GetX(), zCol.GetY(), zCol.GetZ() };
+
+	xRow = Vector3(xCol.GetX(), yCol.GetX(), zCol.GetX());
+	yRow = Vector3(xCol.GetY(), yCol.GetY(), zCol.GetY());
+	zRow = Vector3(xCol.GetZ(), yCol.GetZ(), zCol.GetZ());
 }
 
 

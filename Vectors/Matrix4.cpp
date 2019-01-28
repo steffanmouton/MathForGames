@@ -5,11 +5,8 @@
 Matrix4::Matrix4()
 {
 	xCol, yCol, zCol, wCol, xRow, yRow, zRow, wRow = Vector4(0, 0, 0, 0);
-
-	for (int i = 0; i<16; i++)
-	{
-		data[i] = 0;
-	}
+	
+	data = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	mData = new float[16] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 }
@@ -41,6 +38,7 @@ Matrix4::~Matrix4()
 
 Matrix4 Matrix4::operator*(Matrix4 & rhs)
 {
+	refreshMat();
 	float x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4;
 
 	x1 = xRow.dot(rhs.xCol);
@@ -66,7 +64,7 @@ Matrix4 Matrix4::operator*(Matrix4 & rhs)
 	return Matrix4(x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4);
 }
 
-Vector4 Matrix4::operator[](int index)
+Vector4& Matrix4::operator[](int index)
 {
 	if (index == 0)
 		return xCol;
@@ -78,37 +76,55 @@ Vector4 Matrix4::operator[](int index)
 		return wCol;
 	else
 		std::cout << "Invalid Index" << std::endl;
-	return Vector4();
 }
 
 Vector4 Matrix4::operator*(Vector4 & rhs)
 {
-	return Vector4(xCol.dot(rhs), yCol.dot(rhs), zCol.dot(rhs), wCol.dot(rhs));
+	refreshMat();
+
+	return Vector4(xRow.dot(rhs), yRow.dot(rhs), zRow.dot(rhs), wRow.dot(rhs));
 }
 
 void Matrix4::setRotateX(float angle)
 {
-
+	refreshMat();
 	Matrix4 rotate = { 1, 0, 0, 0, 0, cos(angle), sin(angle), 0, 0, -sin(angle),
-		cos(angle), 0, data[12], data[13], data[14], data[15] };
+		cos(angle), 0, data[12], data[13], data[14], 1 };
 
 	*this = rotate;
 }
 
 void Matrix4::setRotateY(float angle)
 {
+	refreshMat();
 	Matrix4 rotate = { cos(angle), 0, -sin(angle), 0, 0, 1, 0, 0, sin(angle), 0,
-		cos(angle), 0, data[12], data[13], data[14], data[15] };
+		cos(angle), 0, data[12], data[13], data[14], 1 };
 
 	*this = rotate;
 }
 
 void Matrix4::setRotateZ(float angle)
 {
+	refreshMat();
 	Matrix4 rotate = { cos(angle), sin(angle), 0, 0, -sin(angle), cos(angle), 0, 0, 0, 0,
-		1, 0, data[12], data[13], data[14], data[15] };
+		1, 0, data[12], data[13], data[14], 1 };
 
 	*this = rotate;
+}
+
+void Matrix4::refreshMat()
+{
+	delete mData;
+	mData = new float[19]{ xCol.GetX(), xCol.GetY(), xCol.GetZ(), xCol.GetW(),
+		yCol.GetX(), yCol.GetY(), yCol.GetZ(), yCol.GetW(),
+		zCol.GetX(), zCol.GetY(), zCol.GetZ(), zCol.GetW(),
+		wCol.GetX(), wCol.GetY(), wCol.GetZ(), wCol.GetW()};
+
+	xRow = Vector4(xCol.GetX(), yCol.GetX(), zCol.GetX(), wCol.GetX());
+	yRow = Vector4(xCol.GetY(), yCol.GetY(), zCol.GetY(), wCol.GetY());
+	zRow = Vector4(xCol.GetZ(), yCol.GetZ(), zCol.GetZ(), wCol.GetZ());
+	wRow = Vector4(xCol.GetW(), yCol.GetW(), zCol.GetW(), wCol.GetW());
+
 }
 
 void Matrix4::Print()
