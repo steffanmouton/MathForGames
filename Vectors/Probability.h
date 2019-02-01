@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 class Probability
@@ -35,4 +36,5 @@ public:
 	float keptVictoryChance;
 	float* fptr;
 };
+*/
 

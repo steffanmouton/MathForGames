@@ -1,3 +1,4 @@
+/*
 #pragma once
 class MontyHall
 {
@@ -7,4 +8,5 @@ public:
 
 	void runSim();
 };
+*/
 

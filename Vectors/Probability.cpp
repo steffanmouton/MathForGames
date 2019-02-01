@@ -1,3 +1,4 @@
+/*
 #include "Probability.h"
 #include <stdlib.h>
 
@@ -103,3 +104,4 @@ float Probability::chanceKept()
 	*fptr = result;
 	return result;
 }
+*/

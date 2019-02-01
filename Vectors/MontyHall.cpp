@@ -1,3 +1,4 @@
+/*
 #include "MontyHall.h"
 #include "Probability.h"
 #include <cstdlib>
@@ -46,3 +47,4 @@ void MontyHall::runSim()
 	std::cout << "Victory chance on Keeping: " << resultKeep << std::endl;
 
 }
+*/
